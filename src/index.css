@@ -13,21 +13,22 @@ body {
   height: 80px;
   display: flex;
   justify-content: center;
-  background-color:rgb(253, 251, 244);
+  background-color:rgb(221, 237, 245);
 }
 
 #userGrid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-  max-width: 500px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1600px;
   margin: 20px auto;
 }
 
 .user-card {
-  background-color: rgb(253, 251, 244);
+  background-color: rgb(213, 235, 246);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   position: relative;
+  padding: 4px;
 }
 
 .user-info {
@@ -47,7 +48,7 @@ body {
 
 .user-image {
   width: 28%;
-  height: 100px;
+  height: 130px;
   margin-right: 40px;
   border-radius: 50%;
 }
@@ -69,6 +70,7 @@ body {
   color: #555;
   border-top: 1px solid #ccc;
   padding-top: 8px;
+  justify-content: space-between;
 }
 
 .remove-button {
@@ -78,7 +80,6 @@ body {
   font-size: 0.9em;
   border-color: rgb(240, 18, 18);
   align-items: right;
-  margin-left: 230px;
   height: 30px;
   width: 70px;
 }

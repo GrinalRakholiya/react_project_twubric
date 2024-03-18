@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Header from "./sort"; 
+import Header from "./Header"; // Corrected import statement
 
 function UserGrid() {
     const [users, setUsers] = useState([]);
-    const [sortBy, setSortBy] = useState(); 
+    const [sortBy, setSortBy] = useState(null); // Initialize sortBy state to null
+    const [sortOrder, setSortOrder] = useState({}); // Initialize sortOrder state to an empty object
+
     useEffect(() => {
         fetch(
             "https://gist.githubusercontent.com/pandemonia/21703a6a303e0487a73b2610c8db41ab/raw/82e3ef99cde5b6e313922a5ccce7f38e17f790ac/twubric.json"
@@ -17,20 +19,27 @@ function UserGrid() {
             });
     }, []);
 
-    const handleSortChange = (e) => {
-        setSortBy(e.target.value);
+    const handleSortChange = (sortBy) => {
+        setSortBy(sortBy);
+        setSortOrder((prevSortOrder) => {
+            return { ...prevSortOrder, [sortBy]: prevSortOrder[sortBy] === "asc" ? "desc" : "asc" };
+        });
     };
 
     const sortUsers = (sortBy) => {
         return [...users].sort((a, b) => {
-            return a.twubric[sortBy] - b.twubric[sortBy];
+            if (sortOrder[sortBy] === "asc") {
+                return a.twubric[sortBy] - b.twubric[sortBy];
+            } else {
+                return b.twubric[sortBy] - a.twubric[sortBy];
+            }
         });
     };
 
-    const sortedUsers = sortUsers(sortBy);
-    
+    const sortedUsers = sortBy ? sortUsers(sortBy) : users; // Sort only if sortBy is not null
+
     const removeUser = (username) => {
-        const isConfirmed = window.confirm("do you want to remove this user?");
+        const isConfirmed = window.confirm("Do you want to remove this user?");
         if (isConfirmed) {
             setUsers(users.filter((user) => user.username !== username));
         }
@@ -57,11 +66,7 @@ function UserGrid() {
                             </div>
                             <div className="user-bio">
                                 Join Date:{" "}
-                                {new Date(user.join_date * 1000).toLocaleDateString("en-US", {
-                                    month: "short",
-                                    day: "numeric",
-                                    year: "numeric",
-                                })}
+                                {new Date(user.join_date * 1000).toDateString()}
                                 <button className="remove-button" onClick={() => removeUser(user.username)}>
                                     Remove
                                 </button>
@@ -73,4 +78,5 @@ function UserGrid() {
         </div>
     );
 }
+
 export default UserGrid;
