@@ -1,0 +1,116 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+#dateRangePicker {
+  margin: 20px 0;
+  text-align: center;
+  margin-bottom: 10px;
+  align-items: center;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  background-color:rgb(253, 251, 244);
+}
+
+#userGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.user-card {
+  background-color: rgb(253, 251, 244);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.user-info {
+  padding: 10px;
+}
+
+.user-username {
+  font-weight: bold;
+  font-size: 1.2em;
+  text-align: left;
+}
+
+.user-image-stats {
+  display: flex;
+  margin-top: 10px;
+}
+
+.user-image {
+  width: 28%;
+  height: 100px;
+  margin-right: 40px;
+  border-radius: 50%;
+}
+
+.user-stats {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.user-stats div {
+  margin-right: 26px;
+}
+
+.user-bio {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  color: #555;
+  border-top: 1px solid #ccc;
+  padding-top: 8px;
+}
+
+.remove-button {
+  cursor: pointer;
+  color: rgb(245, 236, 236);
+  background-color: rgb(240, 18, 18);
+  font-size: 0.9em;
+  border-color: rgb(240, 18, 18);
+  align-items: right;
+  margin-left: 230px;
+  height: 30px;
+  width: 70px;
+}
+
+.total-badge {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  padding: 5px;
+}
+
+#sortLabel {
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 4px;
+}
+
+#sortByMenu {
+  display: inline-block;
+  font-size: 16px;
+  background-color: rgb(182, 188, 189);
+}
+#startDate{ 
+        background-color: rgb(182, 188, 189);
+        font-size: 16px;     
+}
+#endDate {
+  background-color: rgb(182, 188, 189);
+  font-size: 16px;
+}
+#logo{
+  font-size: 40px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: aqua;
+}
